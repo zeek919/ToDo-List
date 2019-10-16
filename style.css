@@ -4,12 +4,12 @@ body {
     background-color: #fcfcfc;
 }
 
-header {
+.header {
     min-height: 70px;
     background: #251abe;
 }
 
-section.c_section_1 {
+.section--title {
     font-size: 38px;
     font-family: Impact, Charcoal, sans-serif;
     letter-spacing: 3px;
@@ -21,13 +21,9 @@ main {
     justify-content: center;
     align-items: center;;
     padding: 30px;
-
-    /* animation-name: tooLongValue;
-    animation-duration: 2s;
-    animation-fill-mode: forwards; */
 }
 
-form input {
+input {
     min-width: 800px;
     padding: 10px;
     border-color: aqua;
@@ -36,7 +32,7 @@ form input {
     background-color: #fcfcfc;
 }
 
-.c_nav_form button {
+.form__button {
     padding: 16px 10px 10px 10px;
     margin-left: 15px;
     background-color: rgb(72, 72, 255);
@@ -47,7 +43,7 @@ form input {
     border: none;
 }
 
-.wraper {
+.section--wraper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +51,7 @@ form input {
 
 }
 
-.element {
+.section__li--task {
     text-align: center;
     min-width: 700px;
     max-width: 700px;
@@ -67,7 +63,7 @@ form input {
     list-style-type: none;
 }
 
-.c_nav_menu {
+.section__div--empty {
     
     text-align: center;
     min-width: 70%;
@@ -77,13 +73,13 @@ form input {
 
 }
 
-.c_nav_menu span {
+.section__div--span {
     color: rgb(36, 123, 194);
     font-family: Roboto;
     font-size: 32px;
 }
 
-.c_nav_menu p {
+.section__div--p {
     color: #727272;
     padding: 50px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -92,6 +88,7 @@ form input {
 
 .li__button--delete {
     padding: 10px;
+    float: right;
     margin-left: 15px;
     background-color: rgb(72, 72, 255);
     color: white;
@@ -100,6 +97,25 @@ form input {
     border-radius: 5px;
     border: none;
 }
+
+/* ----------------------- */
+
+.main--correctValue {
+    background-color: #fcfcfc;
+
+    animation-name: correctValue;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.main--wrongValue {
+    background-color: red;
+
+    animation-name: tooLongValue;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+/* ----------------------- */
 
 @keyframes tooLongValue
 {
