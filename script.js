@@ -7,6 +7,21 @@ const ul = wraper.querySelector('ul');
 const nothingMessage = wraper.querySelector('div');
 let counter = {value: 0};
 
+const validate = function() {
+    if(input.value.length > 10)
+    {
+        const main = document.querySelector('main');
+
+        main.style.backgroundColor = 'red';
+        input.value = '';
+        input.placeholder = 'ZA DUŻO ZNAKÓW!';
+    }
+    else
+    {
+        generateElement('li');
+    }
+}
+
 const generateButton = function() 
 {
     const createButton = document.createElement('button');
@@ -45,7 +60,7 @@ const generateElement = function(htmlElement)
 
 
 button.addEventListener('click', function(){
-    generateElement('li');
+    validate();
 });
 
 
