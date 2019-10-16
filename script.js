@@ -22,15 +22,14 @@ const validate = function() {
     }
     else
     {
+        generateElement('li');
+
         input.placeholder = 'Wpisz coś...';
         main.style.backgroundColor = '#fcfcfc';
 
-        main.style.animationName = 'tooLongValue2';
+        main.style.animationName = 'correctValue';
         main.style.animationDuration = '2s';
         main.style.animationFillMode = 'forwards';
-        
-        
-        generateElement('li');
     }
 }
 
@@ -39,6 +38,7 @@ const generateButton = function()
     const createButton = document.createElement('button');
     createButton.style.cssFloat = 'right';
     createButton.innerText = 'USUŃ';
+    createButton.classList.add("li__button--delete");
 
     createButton.addEventListener('click', function()
     {

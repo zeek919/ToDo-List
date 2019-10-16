@@ -90,13 +90,24 @@ form input {
     
 }
 
+.li__button--delete {
+    padding: 10px;
+    margin-left: 15px;
+    background-color: rgb(72, 72, 255);
+    color: white;
+    font-family: "Courier New";
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+
 @keyframes tooLongValue
 {
     from {background-color: #fcfcfc;}
     to {background-color: red;}
 }
 
-@keyframes tooLongValue2
+@keyframes correctValue
 {
     from {background-color: red;}
     to {background-color: #fcfcfc;}
