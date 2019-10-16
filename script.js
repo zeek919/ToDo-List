@@ -3,6 +3,8 @@ const input = document.querySelector('input');
 const wraper = document.querySelector('.wraper');
 const ul = wraper.querySelector('ul');
 
+const main = document.querySelector('main');
+
 
 const nothingMessage = wraper.querySelector('div');
 let counter = {value: 0};
@@ -10,14 +12,24 @@ let counter = {value: 0};
 const validate = function() {
     if(input.value.length > 10)
     {
-        const main = document.querySelector('main');
-
         main.style.backgroundColor = 'red';
+        main.style.animationName = 'tooLongValue';
+        main.style.animationDuration = '2s';
+        main.style.animationFillMode = 'forwards';
+
         input.value = '';
         input.placeholder = 'ZA DUŻO ZNAKÓW!';
     }
     else
     {
+        input.placeholder = 'Wpisz coś...';
+        main.style.backgroundColor = '#fcfcfc';
+
+        main.style.animationName = 'tooLongValue2';
+        main.style.animationDuration = '2s';
+        main.style.animationFillMode = 'forwards';
+        
+        
         generateElement('li');
     }
 }
