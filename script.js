@@ -2,22 +2,21 @@ const button = document.querySelector('button');
 const input = document.querySelector('input');
 const wraper = document.querySelector('.section--wraper');
 const ul = wraper.querySelector('ul');
-
 const main = document.querySelector('main');
-
-
 const nothingMessage = wraper.querySelector('div');
+
+
 let counter = {value: 0};
 let counterColor = {value: 0};
 
 const validateShowMessage = function() {
     if(counter.value < 1)
     {
-        nothingMessage.style.display = 'inline';
+        nothingMessage.classList.remove('section__div--display');
     }
     else
     {
-        nothingMessage.style.display = 'none';
+        nothingMessage.classList.add('section__div--display');
     }
 }
 

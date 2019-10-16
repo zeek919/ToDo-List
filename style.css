@@ -117,6 +117,10 @@ input {
 }
 /* ----------------------- */
 
+.section__div--display {
+    display: none;
+}
+
 @keyframes tooLongValue
 {
     from {background-color: #fcfcfc;}
