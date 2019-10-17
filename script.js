@@ -8,6 +8,7 @@ const nothingMessage = wraper.querySelector('.section__div--empty');
 let ifFirst = {value: false};
 let counter = 0;
 let counterColor = {value: 0};
+let x = {value: 0};
 
 const validateShowMessage = function() {
     if(counter < 1)
@@ -75,10 +76,20 @@ const generateEditButton = function() {
     createEditButton.addEventListener('click', function()
     {
         
-        this.parentNode.classList.toggle('li--hide');
-
+        if(x.value < 1)
+        {
+            this.parentNode.classList.add('li--hide');
+            this.parentNode.classList.remove('li--show');
+            x.value++;
+        }
+        else
+        {
+            this.parentNode.classList.remove('li--hide');
+            this.parentNode.classList.add('li--show');
+             
+            x.value--;
+        }
         
-        ifFirst.value = true;
     });
 
     return createEditButton;
@@ -88,10 +99,6 @@ const generateElement = function(htmlElement)
 {
     const createElement = document.createElement(htmlElement);
     createElement.classList.add('section__li--task');
-    if(ifFirst.value = true)
-    {
-        createElement.classList.add('li--show');
-    }
     createElement.innerText = input.value;
     createElement.id = `count_${counter.value}`;
 
