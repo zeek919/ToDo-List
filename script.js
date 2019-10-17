@@ -5,13 +5,13 @@ const ul = wraper.querySelector('.section__ul');
 const main = document.querySelector('main');
 const nothingMessage = wraper.querySelector('.section__div--empty');
 
-let ifFirst = {value: false};
 let counter = 0;
 let counterColor = {value: 0};
-let x = {value: 0};
+let counterOfID = {value: 0};
+let counterOfEditingMenu = {value: 0};
 
 const validateShowMessage = function() {
-    if(counter < 1)
+    if(counterOfID.value < 1)
     {
         nothingMessage.classList.remove('section__div--display');
     }
@@ -55,7 +55,7 @@ const generateDeleteButton = function()
     createButton.addEventListener('click', function()
     {
         console.log(createButton.parentNode);
-        counter--;
+        counterOfID.value--;
 
         const parentToDelete = createButton.parentNode;
 
@@ -76,18 +76,18 @@ const generateEditButton = function() {
     createEditButton.addEventListener('click', function()
     {
         
-        if(x.value < 1)
+        if(counterOfEditingMenu.value < 1)
         {
             this.parentNode.classList.add('li--hide');
             this.parentNode.classList.remove('li--show');
-            x.value++;
+            counterOfEditingMenu.value++;
         }
         else
         {
             this.parentNode.classList.remove('li--hide');
             this.parentNode.classList.add('li--show');
              
-            x.value--;
+            counterOfEditingMenu.value--;
         }
         
     });
@@ -100,10 +100,10 @@ const generateElement = function(htmlElement)
     const createElement = document.createElement(htmlElement);
     createElement.classList.add('section__li--task');
     createElement.innerText = input.value;
-    createElement.id = `count_${counter.value}`;
+    createElement.id = `count_${counterOfID.value}`;
 
     const elChildButton = ul.appendChild(createElement);
-    counter++;
+    counterOfID.value++;
 
     elChildButton.appendChild(generateDeleteButton());
     elChildButton.appendChild(generateEditButton());
