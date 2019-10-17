@@ -5,7 +5,7 @@ const ul = wraper.querySelector('.section__ul');
 const main = document.querySelector('main');
 const nothingMessage = wraper.querySelector('.section__div--empty');
 
-
+let ifFirst = {value: false};
 let counter = 0;
 let counterColor = {value: 0};
 
@@ -20,7 +20,7 @@ const validateShowMessage = function() {
     }
 }
 
-const validateColor = function() {
+const validateForm = function() {
 
     if(input.value.length > 10)
     {
@@ -44,7 +44,7 @@ const validateColor = function() {
     }
 }
 
-const generateButton = function() 
+const generateDeleteButton = function() 
 {
     const createButton = document.createElement('button');
     
@@ -65,17 +65,41 @@ const generateButton = function()
     return createButton;
 }
 
+const generateEditButton = function() {
+    const createEditButton = document.createElement('button');
+
+    createEditButton.innerText = 'EDYTUJ';
+    createEditButton.classList = 'li__button--edit';
+    
+    
+    createEditButton.addEventListener('click', function()
+    {
+        
+        this.parentNode.classList.toggle('li--hide');
+
+        
+        ifFirst.value = true;
+    });
+
+    return createEditButton;
+}
+
 const generateElement = function(htmlElement)
 {
     const createElement = document.createElement(htmlElement);
     createElement.classList.add('section__li--task');
+    if(ifFirst.value = true)
+    {
+        createElement.classList.add('li--show');
+    }
     createElement.innerText = input.value;
     createElement.id = `count_${counter.value}`;
 
     const elChildButton = ul.appendChild(createElement);
     counter++;
 
-    elChildButton.appendChild(generateButton());
+    elChildButton.appendChild(generateDeleteButton());
+    elChildButton.appendChild(generateEditButton());
     validateShowMessage();
 
 }
@@ -84,14 +108,15 @@ const generateElement = function(htmlElement)
 
 
 button.addEventListener('click', function(){
-    validateColor();
+    validateForm();
 });
 
 input.addEventListener('keydown', function(event){
     if(event.keyCode === 13)
     {
-        validateColor();
+        validateForm();
         event.preventDefault();
     }
 });
+
 
