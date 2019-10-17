@@ -1,16 +1,16 @@
-const button = document.querySelector('button');
-const input = document.querySelector('input');
+const button = document.querySelector('.form__button');
+const input = document.querySelector('.form__input');
 const wraper = document.querySelector('.section--wraper');
-const ul = wraper.querySelector('ul');
+const ul = wraper.querySelector('.section__ul');
 const main = document.querySelector('main');
-const nothingMessage = wraper.querySelector('div');
+const nothingMessage = wraper.querySelector('.section__div--empty');
 
 
-let counter = {value: 0};
+let counter = 0;
 let counterColor = {value: 0};
 
 const validateShowMessage = function() {
-    if(counter.value < 1)
+    if(counter < 1)
     {
         nothingMessage.classList.remove('section__div--display');
     }
@@ -54,7 +54,7 @@ const generateButton = function()
     createButton.addEventListener('click', function()
     {
         console.log(createButton.parentNode);
-        counter.value--;
+        counter--;
 
         const parentToDelete = createButton.parentNode;
 
@@ -72,8 +72,8 @@ const generateElement = function(htmlElement)
     createElement.innerText = input.value;
     createElement.id = `count_${counter.value}`;
 
-    var elChildButton = ul.appendChild(createElement);
-    counter.value++;
+    const elChildButton = ul.appendChild(createElement);
+    counter++;
 
     elChildButton.appendChild(generateButton());
     validateShowMessage();
@@ -85,5 +85,13 @@ const generateElement = function(htmlElement)
 
 button.addEventListener('click', function(){
     validateColor();
+});
+
+input.addEventListener('keydown', function(event){
+    if(event.keyCode === 13)
+    {
+        validateColor();
+        event.preventDefault();
+    }
 });
 
