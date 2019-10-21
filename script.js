@@ -66,53 +66,55 @@ const generateDeleteButton = function()
     return createButton;
 }
 
-const generateEditButton = function() {
-    const createEditButton = document.createElement('button');
+const createEditInput = function(){
+    const editInput = document.createElement('input');
+    editInput.classList.add('li__input--display');
 
-    createEditButton.innerText = 'EDYTUJ';
-    createEditButton.classList = 'li__button--edit';
-    
-    
-    createEditButton.addEventListener('click', function()
-    {
-        
-        if(counterOfEditingMenu.value < 1)
+    editInput.addEventListener('keydown', function(e){
+        if(e.keyCode === 13)
         {
-            this.parentNode.classList.add('li--hide');
-            this.parentNode.classList.remove('li--show');
-            counterOfEditingMenu.value++;
-        }
-        else
-        {
-            this.parentNode.classList.remove('li--hide');
-            this.parentNode.classList.add('li--show');
-             
-            counterOfEditingMenu.value--;
+            
+            const a = this.parentNode.querySelector('span');
+            a.innerText = editInput.value;
+            this.style.display = 'none';
+            a.style.display = 'inline';
+            e.preventDefault();
         }
         
     });
 
-    return createEditButton;
+    return editInput;
 }
 
+const createSpan = function(){
+    const span = document.createElement('span');
+
+    span.classList.add('li--span');
+    span.innerText = input.value;
+
+    span.addEventListener('click', function(){
+        
+        span.style.display = 'none';
+        this.parentNode.appendChild(createEditInput());
+        
+    });
+
+    return span;
+}
 const generateElement = function(htmlElement)
 {
     const createElement = document.createElement(htmlElement);
     createElement.classList.add('section__li--task');
-    createElement.innerText = input.value;
     createElement.id = `count_${counterOfID.value}`;
 
     const elChildButton = ul.appendChild(createElement);
     counterOfID.value++;
 
     elChildButton.appendChild(generateDeleteButton());
-    elChildButton.appendChild(generateEditButton());
+    elChildButton.appendChild(createSpan());
     validateShowMessage();
 
 }
-
-
-
 
 button.addEventListener('click', function(){
     validateForm();
@@ -125,5 +127,6 @@ input.addEventListener('keydown', function(event){
         event.preventDefault();
     }
 });
+
 
 

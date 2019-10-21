@@ -23,7 +23,7 @@ main {
     padding: 30px;
 }
 
-input {
+.form__input {
     min-width: 800px;
     padding: 10px;
     border-color: aqua;
@@ -124,6 +124,15 @@ input {
     border: 1px solid #251abe;
 }
 
+.li--span {
+    padding: 0px, 0px, 20px, 0px;
+    margin: 0px, 0px, 20px, 0px;
+    float: left;
+}
+
+.li__input--display {
+    display: inline;
+}
 /* ----------------------- */
 
 .main--correctValue {
@@ -146,6 +155,8 @@ input {
 .section__div--display {
     display: none;
 }
+
+
 
 @keyframes tooLongValue
 {
