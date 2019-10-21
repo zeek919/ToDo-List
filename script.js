@@ -11,20 +11,16 @@ let counterOfID = {value: 0};
 let counterOfEditingMenu = {value: 0};
 
 const validateShowMessage = function() {
-    if(counterOfID.value < 1)
-    {
+    if(counterOfID.value < 1){
         nothingMessage.classList.remove('section__div--display');
     }
-    else
-    {
+    else{
         nothingMessage.classList.add('section__div--display');
     }
 }
 
 const validateForm = function() {
-
-    if(input.value.length > 10)
-    {
+    if(input.value.length > 30){
         main.classList.remove('main--correctValue');
         main.classList.add('main--wrongValue');
 
@@ -32,8 +28,7 @@ const validateForm = function() {
         input.placeholder = 'ZA DUŻO ZNAKÓW!';
         counterColor.value++;
     }
-    else
-    {
+    else{
         if(counterColor.value>=1) {
             main.classList.remove('main--wrongValue');
             main.classList.add('main--correctValue');
@@ -45,15 +40,13 @@ const validateForm = function() {
     }
 }
 
-const generateDeleteButton = function() 
-{
+const generateDeleteButton = function() {
     const createButton = document.createElement('button');
     
     createButton.innerText = 'USUŃ';
     createButton.classList.add("li__button--delete");
 
-    createButton.addEventListener('click', function()
-    {
+    createButton.addEventListener('click', function(){
         console.log(createButton.parentNode);
         counterOfID.value--;
 
@@ -68,17 +61,16 @@ const generateDeleteButton = function()
 
 const createEditInput = function(){
     const editInput = document.createElement('input');
-    editInput.classList.add('li__input--display');
+    editInput.classList.add('li__input');
 
-    editInput.addEventListener('keydown', function(e){
-        if(e.keyCode === 13)
-        {
-            
-            const a = this.parentNode.querySelector('span');
-            a.innerText = editInput.value;
+    editInput.addEventListener('keydown', function(key){
+        if(key.keyCode === 13){            
+            const spanTag = this.parentNode.querySelector('span');
+            this.innerHTML = spanTag.innerText;
+            spanTag.innerText = editInput.value;
+
             this.style.display = 'none';
-            a.style.display = 'inline';
-            e.preventDefault();
+            spanTag.style.display = 'inline';
         }
         
     });
@@ -101,8 +93,8 @@ const createSpan = function(){
 
     return span;
 }
-const generateElement = function(htmlElement)
-{
+
+const generateElement = function(htmlElement) {
     const createElement = document.createElement(htmlElement);
     createElement.classList.add('section__li--task');
     createElement.id = `count_${counterOfID.value}`;
@@ -120,11 +112,16 @@ button.addEventListener('click', function(){
     validateForm();
 });
 
-input.addEventListener('keydown', function(event){
-    if(event.keyCode === 13)
-    {
-        validateForm();
-        event.preventDefault();
+input.addEventListener('keydown', function(event) {
+    if(event.keyCode === 13) {
+        if(this.value.length < 3) {
+            alert('Nie mam pomyslu jak to ladnie zrobic wiec wstawilem alert xD');
+            event.preventDefault();
+        }
+        else {
+            validateForm();
+            event.preventDefault();
+        }
     }
 });
 
